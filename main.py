@@ -1,6 +1,7 @@
 from src.textSummerizer.logging import logger
 from src.textSummerizer.pipeline.stage_01_data_ingestion_pipeline import DataIngestionTrainingPipeline
 from src.textSummerizer.pipeline.stage_02_data_transformation_pipeline import DataTransformationPipeline
+from src.textSummerizer.pipeline.stage_03_model_trainer_pipeline import ModelTrainerConfig
 
 STAGE_NAME = "Data Ingestion stage"
 
@@ -28,3 +29,14 @@ if __name__ == "__main__":
     except Exception as e:
         logger.exception(e)
         raise e
+    
+
+STAGE_NAME = "Model Trainer"
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+    obj = ModelTrainerConfig()
+    obj.initiate_model_trainer()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<< \n\nx========x")
+except Exception as e:
+    logger.exception(e)
+    raise e
